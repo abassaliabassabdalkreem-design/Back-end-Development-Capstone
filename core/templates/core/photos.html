@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photos - Band Capstone</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/songs/">Songs</a> |
+        <a href="/photos/">Photos</a> |
+        <a href="/concerts/">Concerts</a>
+    </nav>
+    <h1>Photos</h1>
+    <ul>
+        {% for photo in photos %}
+        <li>
+            <strong>{{ photo.title }}</strong><br>
+            <img src="{{ photo.image_url }}" alt="{{ photo.title }}" width="200"><br>
+            {{ photo.description }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

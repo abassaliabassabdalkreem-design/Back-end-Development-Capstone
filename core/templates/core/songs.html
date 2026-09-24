@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Songs - Band Capstone</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 30%;
+            width: 40%;
+            background: white;
+            border: 2px solid black;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/songs/">Songs</a> |
+        <a href="/photos/">Photos</a> |
+        <a href="/concerts/">Concerts</a>
+    </nav>
+    <h1>Songs</h1>
+    <ul>
+        {% for song in songs %}
+        <li>
+            {{ song.title }} - {{ song.artist }}
+            <button onclick="showLyrics('{{ song.title|escapejs }}', '{{ song.lyrics|escapejs }}')">Show Lyrics</button>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div id="lyricsModal" class="modal">
+        <h2 id="modalTitle"></h2>
+        <p id="modalLyrics"></p>
+        <button onclick="document.getElementById('lyricsModal').style.display='none'">Close</button>
+    </div>
+
+    <script>
+        function showLyrics(title, lyrics) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalLyrics').innerText = lyrics;
+            document.getElementById('lyricsModal').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
